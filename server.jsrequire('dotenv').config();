@@ -1,0 +1,23 @@
+require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const mongoose = require('mongoose');
+const Redis = require('ioredis');
+
+// Import your routes
+const googleRoutes = require('./routes/google'); // adjust if your routes folder is different
+const microsoftRoutes = require('./routes/microsoft');
+const emailRoutes = require('./routes/email');
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+// Connect MongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.log('MongoDB connection error:', err));
+
+// Connect Redis
+const redis = new Redis(process.env.REDIS_URL);
+redis.on('connect', () => console.l

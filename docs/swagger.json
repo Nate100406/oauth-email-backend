@@ -1,0 +1,12 @@
+{
+  "openapi": "3.0.0",
+  "info": { "title": "Outreach Email API", "version": "1.0.0" },
+  "paths": {
+    "/connect/google": { "get": { "summary": "Start Google OAuth", "responses": { "302": { "description": "Redirect" } } } },
+    "/connect/google/callback": { "get": { "summary": "Google OAuth callback", "parameters": [{ "name": "code", "in": "query" }, { "name": "state", "in": "query" }], "responses": { "200": { "description": "OK" } } } },
+    "/connect/microsoft": { "get": { "summary": "Start Microsoft OAuth", "responses": { "302": { "description": "Redirect" } } } },
+    "/connect/microsoft/callback": { "get": { "summary": "Microsoft OAuth callback", "parameters": [{ "name": "code", "in": "query" }, { "name": "state", "in": "query" }], "responses": { "200": { "description": "OK" } } } },
+    "/send-email": { "post": { "summary": "Enqueue email for user", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "properties": { "userId": { "type": "string" }, "to": { "type": "string" }, "subject": { "type": "string" }, "body": { "type": "string" } }, "required": ["userId", "to", "subject", "body"] } } } }, "responses": { "200": { "description": "OK" } } } },
+    "/jobs/{userId}": { "get": { "summary": "List jobs for a user", "parameters": [{ "name": "userId", "in": "path", "required": true }], "responses": { "200": { "description": "OK" } } } }
+  }
+}
