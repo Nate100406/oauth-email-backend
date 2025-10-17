@@ -33,12 +33,7 @@ app.get('/', (req, res) => res.send('Backend is running!'));
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const Redis = require('ioredis');
+app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));;
 
 const googleRoutes = require('./routes/google');
 const microsoftRoutes = require('./routes/microsoft');
