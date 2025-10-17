@@ -4,20 +4,6 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const Redis = require('ioredis');
 
-const googleRoutes = require('./routes/google');
-const microsoftRoutes = require('./routes/microsoft');
-const emailRoutes = require('./routes/email');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
-
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: krequire('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const Redis = require('ioredis');
-
 // your routes imports
 const googleRoutes = require('./routes/google');
 const microsoftRoutes = require('./routes/microsoft');
@@ -47,20 +33,7 @@ app.get('/', (req, res) => res.send('Backend is running!'));
 
 // Start server
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const Redis = require('ioredis');
-
-const googleRoutes = require('./routes/google');
-const microsoftRoutes = require('./routes/microsoft');
-const emailRoutes = require('./routes/email');
-
-const app = express();
-app.use(cors());
-app.use(express.json());
+app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));;
 
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
@@ -74,7 +47,7 @@ app.use('/connect/google', googleRoutes);
 app.use('/connect/microsoft', microsoftRoutes);
 app.use('/send-email', emailRoutes);
 
-app.get('/', (req, res) => res.send('Backend is running!'));
+app.get('/', (req, res) => res.send('Backend in running!'));
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:3000`));
